@@ -3,6 +3,7 @@ const unit = document.querySelector(".unit");
 const feet = document.querySelector(".feet");
 const inches = document.querySelector(".inches");
 const result = document.querySelector(".result");
+const statusBMI = document.querySelector(".statusBMI");
 
 function calculateBMI() {
   let convertedWeight = weight.value;
@@ -21,16 +22,14 @@ function calculateBMI() {
 
   result.textContent = BMI.toFixed(2);
 
-  if (BMI.toFixed(2) < 18.5) {
+  if (BMI.toFixed(2) <= 18.5) {
     status = "Underweight";
-  } else if (BMI.toFixed(2) < 24.9) {
+  } else if (BMI.toFixed(2) >= 18.5 && BMI.toFixed(2) < 24.9) {
     status = "Normal weight";
-  } else if (BMI.toFixed(2) < 29.9) {
+  } else if (BMI.toFixed(2) >= 24.9 && BMI.toFixed(2) < 29.9) {
     status = "Overweight";
   } else {
     status = "Obesity";
   }
-
-  document.getElementsByClassName("result").innerText =
-    "Your BMI is: " + BMI.toFixed(2) + " (" + status + ")";
+  statusBMI.textContent = "The weight is " + status;
 }
