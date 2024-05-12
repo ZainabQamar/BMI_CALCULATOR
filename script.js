@@ -8,6 +8,7 @@ const statusBMI = document.querySelector(".statusBMI");
 function calculateBMI() {
   let convertedWeight = weight.value;
   let status;
+
   if (unit.value === "LB") {
     convertedWeight = weight.value * 0.45359;
   }
@@ -24,12 +25,21 @@ function calculateBMI() {
 
   if (BMI.toFixed(2) <= 18.5) {
     status = "Underweight";
-  } else if (BMI.toFixed(2) >= 18.5 && BMI.toFixed(2) < 24.9) {
+  } else if (BMI.toFixed(2) >= 18.5 && BMI.toFixed(2) <= 24.9) {
     status = "Normal weight";
-  } else if (BMI.toFixed(2) >= 24.9 && BMI.toFixed(2) < 29.9) {
+  } else if (BMI.toFixed(2) >= 25.9 && BMI.toFixed(2) < 39.9) {
     status = "Overweight";
-  } else {
+  } else if (BMI.toFixed(2) >= 40.0) {
     status = "Obesity";
+  } else {
+    staus: "Enter valid value";
   }
   statusBMI.textContent = "The weight is " + status;
+}
+function clearValues() {
+  document.querySelector(".weight").value = "";
+  document.querySelector(".feet").value = "";
+  document.querySelector(".inches").value = "";
+  document.querySelector(".result").innerHTML = "";
+  document.querySelector(".statusBMI").innerHTML = "";
 }
